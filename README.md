@@ -1,201 +1,242 @@
-Notice Board
+# Notice Board
 
-A full-featured Notice Board application built with Next.js (Pages Router), Prisma ORM, Supabase PostgreSQL, and Tailwind CSS.
+A full-featured Notice Board application built with **Next.js (Pages Router)**, **Prisma ORM**, **Supabase PostgreSQL**, and **Tailwind CSS**.
 
 This project was developed as part of the Reno Platforms Web Development Internship Assignment.
 
-The application supports full Create, Read, Update, and Delete (CRUD) functionality, server-side validation, Urgent-first ordering, responsive design, and optional image support.
+---
 
-Live Demo
+## Live Demo
 
-Live URL: https://noticeboard-eight.vercel.app/
+**Live URL:** https://noticeboard-eight.vercel.app/
 
-GitHub Repository: https://github.com/muqtadirkhxn/noticeboard
+**GitHub Repository:** https://github.com/muqtadirkhxn/noticeboard
 
-Project Overview
+---
 
-The Notice Board application allows users to create, view, edit, and delete notices while maintaining persistent storage through a hosted PostgreSQL database using Prisma ORM.
+## Features
 
-The application follows the Reno Platforms assignment requirements by implementing:
+### Notice Management
 
-Full CRUD functionality
-API-based data operations
-Server-side validation
-Database persistence
-Responsive design
-Urgent-first ordering handled at the database level
-Delete confirmation before removal
-Features
-Create, view, edit, and delete notices
-Notice fields:
-Title (required)
-Body (required)
-Category (Exam, Event, General)
-Priority (Normal, Urgent)
-Publish Date
-Optional Image URL
-Urgent notices displayed before Normal notices
-Visible red Urgent badge
-Server-side validation in API routes
-Delete confirmation before removal
-Responsive design for desktop and mobile devices
-Category filtering (All, Exam, Event, General)
-Optional image support for notices
-Persistent cloud database storage using Supabase PostgreSQL
-Assignment Compliance
+- Create notices
+- View notices
+- Edit notices
+- Delete notices
 
-This project satisfies the Reno Platforms assignment requirements:
+### Notice Fields
 
-✅ Next.js Pages Router
-✅ Prisma ORM
-✅ Hosted PostgreSQL Database (Supabase)
-✅ Full CRUD Functionality
-✅ API Routes
-✅ Server-side Validation
-✅ Urgent-first Database Ordering
-✅ Delete Confirmation
-✅ Responsive Design
-✅ Optional Image Support
-✅ Public Deployment Ready
-Screenshots
-Home Page
+- Title (required)
+- Body (required)
+- Category (Exam, Event, General)
+- Priority (Normal, Urgent)
+- Publish Date
+- Optional Image URL
 
-Add screenshot after deployment
+### Additional Features
 
-Create Notice Page
+- Urgent notices displayed before normal notices
+- Visible Urgent badge
+- Server-side validation
+- Category filtering
+- Responsive design
+- Delete confirmation before removal
+- Cloud database persistence using Supabase PostgreSQL
 
-Add screenshot after deployment
+---
 
-Mobile Responsive View
+## Assignment Requirements Covered
 
-Add screenshot after deployment
+- ✅ Next.js Pages Router
+- ✅ Prisma ORM
+- ✅ Hosted PostgreSQL Database (Supabase)
+- ✅ Full CRUD Functionality
+- ✅ API Routes
+- ✅ Server-side Validation
+- ✅ Urgent-first Ordering
+- ✅ Responsive Design
+- ✅ Category Filtering
+- ✅ Optional Image Support
+- ✅ Public GitHub Repository
+- ✅ Public Vercel Deployment
 
-Tech Stack
-Layer Technology
-Framework Next.js 14 (Pages Router)
-ORM Prisma
-Database Supabase PostgreSQL
-Hosting Vercel (Free Tier)
-Styling Tailwind CSS
-Running Locally
-Prerequisites
-Node.js 18+
-npm
-Supabase Account
-Installation
+---
 
-Clone the repository:
+## Tech Stack
 
-git clone <repository-url>
+| Layer     | Technology                |
+| --------- | ------------------------- |
+| Framework | Next.js 14 (Pages Router) |
+| ORM       | Prisma                    |
+| Database  | Supabase PostgreSQL       |
+| Hosting   | Vercel (Free Tier)        |
+| Styling   | Tailwind CSS              |
+
+---
+
+# Running Locally
+
+## Prerequisites
+
+- Node.js 18+
+- npm
+- Supabase Account
+
+## Installation
+
+### Clone Repository
+
+```bash
+git clone https://github.com/muqtadirkhxn/noticeboard.git
 cd noticeboard
+```
 
-Install dependencies:
+### Install Dependencies
 
+```bash
 npm install
+```
 
-Create a .env file:
+### Create Environment File
 
+Create a `.env` file:
+
+```env
 DATABASE_URL="your_database_url"
-
 DIRECT_URL="your_direct_database_url"
+```
 
-Push the Prisma schema:
+### Push Prisma Schema
 
+```bash
 npx prisma db push
+```
 
-Generate Prisma Client:
+### Generate Prisma Client
 
+```bash
 npx prisma generate
+```
 
-Start the development server:
+### Start Development Server
 
+```bash
 npm run dev
+```
 
 Open:
 
+```text
 http://localhost:3000
+```
 
-Environment Variables
+---
 
+## Environment Variables
+
+```env
 DATABASE_URL="postgresql://..."
-
 DIRECT_URL="postgresql://..."
+```
 
-These values can be obtained from:
+You can obtain these values from:
 
-Supabase Dashboard → Settings → Database → Prisma Connection String
+**Supabase Dashboard → Settings → Database → Prisma Connection String**
 
-API Routes
-Method Route Description
-GET /api/notices Fetch all notices (Urgent first)
-POST /api/notices Create a notice
-GET /api/notices/[id] Fetch a single notice
-PUT /api/notices/[id] Update a notice
-DELETE /api/notices/[id] Delete a notice
+---
 
-All mutating routes perform validation on the server and return appropriate HTTP status codes.
+## API Routes
 
-Server-Side Validation
+| Method | Route               | Description         |
+| ------ | ------------------- | ------------------- |
+| GET    | `/api/notices`      | Fetch all notices   |
+| POST   | `/api/notices`      | Create notice       |
+| GET    | `/api/notices/[id]` | Fetch single notice |
+| PUT    | `/api/notices/[id]` | Update notice       |
+| DELETE | `/api/notices/[id]` | Delete notice       |
 
-Validation is performed inside the API routes.
+---
 
-Checks include:
+## Server-Side Validation
 
-Title cannot be empty
-Body cannot be empty
-Publish date must be valid
-Category must be Exam, Event, or General
-Priority must be Normal or Urgent
+Validation is performed inside API routes.
 
-Invalid requests return validation errors with appropriate HTTP status codes.
+### Validation Rules
 
-Database Ordering Logic
+- Title cannot be empty
+- Body cannot be empty
+- Publish date must be valid
+- Category must be:
+  - Exam
+  - Event
+  - General
+- Priority must be:
+  - Normal
+  - Urgent
 
-Urgent notices are ordered before Normal notices directly in the Prisma query:
+Invalid requests return appropriate HTTP status codes and validation messages.
 
-orderBy: [
-{ priority: 'desc' },
-{ createdAt: 'desc' }
-]
+---
 
-This ensures sorting is handled on the server/database side rather than in the browser.
+## Database Ordering Logic
 
-Deployment
+Urgent notices are sorted before normal notices directly in the Prisma query:
+
+```javascript
+orderBy: [{ priority: "desc" }, { createdAt: "desc" }];
+```
+
+This ensures sorting is performed on the server/database rather than in the browser.
+
+---
+
+## Deployment
 
 The application is deployed using Vercel.
 
-Deployment Steps
-Push the repository to GitHub
-Import the repository into Vercel
-Add environment variables:
-DATABASE_URL
-DIRECT_URL
-Deploy the application
-Verify CRUD operations in production
-One Thing I Would Improve With More Time
+### Deployment Steps
 
-If given more time, I would implement image uploads using Supabase Storage instead of requiring image URLs. This would provide a better user experience and allow users to upload images directly from their devices.
+1. Push repository to GitHub
+2. Import repository into Vercel
+3. Add environment variables:
+   - DATABASE_URL
+   - DIRECT_URL
+4. Deploy
+5. Verify CRUD operations
+
+---
+
+## One Thing I Would Improve With More Time
+
+If given more time, I would implement direct image uploads using **Supabase Storage** instead of requiring image URLs.
+
+This would provide a better user experience by allowing users to upload images directly from their devices.
 
 Additional improvements would include:
 
-Search functionality
-Pagination for large datasets
-Authentication and authorization
-Rich text editor for notice content
-Notice scheduling and expiration
-AI Usage
+- Search functionality
+- Pagination for large datasets
+- Notice scheduling
+- Notice expiration
+- Authentication and authorization
 
-AI tools (Claude and ChatGPT) were used for:
+---
 
-Project architecture guidance
-Prisma schema design
-API route implementation
-UI and responsive design suggestions
-Debugging and troubleshooting
-Deployment guidance and code review
+## AI Usage
 
-All generated code was reviewed, tested, modified, and integrated manually. The final implementation, validation logic, database configuration, responsive behavior, and deployment setup were verified and adjusted by me.
+AI tools (**ChatGPT** and **Claude**) were used for:
 
-Author
+- Project architecture guidance
+- Prisma schema design
+- API route implementation
+- Responsive UI suggestions
+- Debugging and troubleshooting
+- Deployment guidance
+- Code review
 
-Muqtadir Khan
+All generated code was reviewed, tested, modified, and integrated manually. Final implementation decisions, validation logic, database configuration, responsive behavior, and deployment setup were verified and adjusted by me.
+
+---
+
+## Author
+
+**Muqtadir Khan**
