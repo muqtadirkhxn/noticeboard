@@ -8,9 +8,9 @@ The application supports full Create, Read, Update, and Delete (CRUD) functional
 
 Live Demo
 
-Live URL: [Add your Vercel URL here]
+Live URL: https://noticeboard-eight.vercel.app/
 
-GitHub Repository: [Add your GitHub Repository URL here]
+GitHub Repository: https://github.com/muqtadirkhxn/noticeboard
 
 Project Overview
 
@@ -96,6 +96,7 @@ npm install
 Create a .env file:
 
 DATABASE_URL="your_database_url"
+
 DIRECT_URL="your_direct_database_url"
 
 Push the Prisma schema:
@@ -113,8 +114,11 @@ npm run dev
 Open:
 
 http://localhost:3000
+
 Environment Variables
+
 DATABASE_URL="postgresql://..."
+
 DIRECT_URL="postgresql://..."
 
 These values can be obtained from:
