@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Environment variables — NEVER commit .env
+.env
+.env.local
+.env.*.local
+
+# Prisma
+prisma/dev.db
+prisma/migrations/
+
+# Misc
+.DS_Store
+*.log
